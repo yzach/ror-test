@@ -1,5 +1,6 @@
 %h2{id: "story-#{story.id}"}
   = story.title
   %small= story.updated_at.strftime('%v %R')
-%p= story.text
+%div
+  = raw story.text
 

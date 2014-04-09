@@ -1,0 +1,10 @@
+= render 'story', story: @story
+
+- content_for :sidebar do
+  - if current_user == @story.user
+    %h3 Actions
+    %ul.nav.nav-pills.nav-stacked
+      %li
+        = button_to 'Edit', edit_story_path(@story), method: :get, class: ['btn', 'btn-default']
+      %li
+        = button_to 'Delete', story_path(@story), method: :delete, class: ['btn', 'btn-danger']

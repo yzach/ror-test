@@ -1,0 +1,12 @@
+%h1 My stories
+
+- @stories.each do |story|
+  = render 'story', story: story
+  = link_to 'more...', story_path(story)
+
+- content_for :sidebar do
+  %h3 Actions
+  %ul.nav.nav-pills.nav-stacked
+    %li
+      = button_to 'Add', new_story_path, method: :get, class: ['btn', 'btn-success']
+  = render 'stories_sidebar', stories: @stories

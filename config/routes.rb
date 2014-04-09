@@ -1,8 +1,11 @@
 RorTest::Application.routes.draw do
 
   devise_for :users
-  root 'home#index'
-  get 'my-stories' => 'home#my_stories'
+  resources :stories
+
+  root 'stories#index'
+  get 'my-stories' => 'stories#my_stories'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

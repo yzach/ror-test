@@ -17,9 +17,9 @@
           %a.navbar-brand{href: root_path} Blog name
           %ul.nav.navbar-nav
             %li
-              = link_to('All stories', controller: '/home', action: 'index')
+              = link_to('All stories', controller: '/stories', action: 'index')
             %li
-              = link_to('My stories', controller: 'home', action: 'my_stories')
+              = link_to('My stories', controller: '/stories', action: 'my_stories')
             %li.dropdown
               %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
                 Language
