@@ -1,0 +1,5 @@
+%h3 News
+%ul.nav.nav-pills.nav-stacked
+  - stories.each do |story|
+    %li
+      %a{href: "#story-#{story.id}"}= story.title
