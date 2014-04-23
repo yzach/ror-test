@@ -11,7 +11,7 @@ class StoriesController < ApplicationController
     @story.update_attributes user: current_user
 
     if @story.save
-      redirect_to @story
+      redirect_to @story, notice: 'Story has been created'
     else
       render 'story_form'
     end
@@ -40,7 +40,7 @@ class StoriesController < ApplicationController
 
     if @story.update_attributes story_params
       @story.save
-      redirect_to @story
+      redirect_to @story, notice: 'Story has been updated'
     else
       render 'story_form'
     end
@@ -49,6 +49,9 @@ class StoriesController < ApplicationController
   def destroy
     @story = users_story
     @story.delete
+
+    # For some reason has no effect when appended to #redirect_to
+    flash[:notice] = 'Story has been removed'
 
     redirect_to action: 'my_stories'
   end

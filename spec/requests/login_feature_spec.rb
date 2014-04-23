@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe 'Login feature' do
+  # This spec isn't supposed to test devise functionality.
+  # Devise is already covered with own tests.
+
   subject { page }
 
   before {
