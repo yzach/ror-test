@@ -52,6 +52,16 @@ gem 'haml'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
-gem 'rspec'
-gem 'rspec-rails'
-gem 'capybara'
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'guard-rspec'
+  gem 'launchy'
+end

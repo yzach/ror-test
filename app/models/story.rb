@@ -3,4 +3,5 @@ class Story < ActiveRecord::Base
 
   validates :title, length: {in: 3..120}
   validates :text, presence: true
+  validates :user, presence: true
 end

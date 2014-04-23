@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
-  skip_after_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @stories = Story.all

@@ -4,7 +4,7 @@ RorTest::Application.routes.draw do
   resources :stories
 
   root 'stories#index'
-  get 'my-stories' => 'stories#my_stories'
+  get 'my-stories' => 'stories#my_stories', as: 'my_stories'
 
 
 
