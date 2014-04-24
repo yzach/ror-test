@@ -1,10 +1,15 @@
 RorTest::Application.routes.draw do
 
-  devise_for :users
-  resources :stories
+  available_locales_regexp = Regexp.union(*I18n.available_locales.map(&:to_s))
 
+  scope '(:locale)', locale: available_locales_regexp, defaults: { locale: nil } do
+    devise_for :users
+    resources :stories
+    get 'my-stories' => 'stories#my_stories', as: 'my_stories'
+  end
+
+  get '/:locale' => 'stories#index', locale: available_locales_regexp
   root 'stories#index'
-  get 'my-stories' => 'stories#my_stories', as: 'my_stories'
 
 
 

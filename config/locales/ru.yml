@@ -1,0 +1,15 @@
+
+ru:
+  language: "Языки"
+  my_stories: "Мои новости"
+  all_stories: "Новости"
+  register: "Регистрация"
+  login: "Вход"
+  logout: "Выход"
+  news_header: "Новости"
+  more_button: "читать..."
+  actions_header: "Actions"
+  add_button: "Добавить"
+  edit_button: "Изменить"
+  delete_button: "Удалить"
+  cancel_button: "Отмена"

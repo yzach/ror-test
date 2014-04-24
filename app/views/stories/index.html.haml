@@ -1,7 +1,7 @@
-%h1= 'News'
+%h1= t :news_header
 - @stories.each do |story|
   = render 'story', story: story
-  = link_to 'more...', story_path(story)
+  = link_to t(:more_button), story_path(story)
 
 - content_for :sidebar do
   = render 'stories_sidebar', stories: @stories

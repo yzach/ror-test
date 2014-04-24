@@ -1,0 +1,7 @@
+.nav-stacked > li {
+    float: none
+}
+
+.navbar-right {
+    float: left!important
+}

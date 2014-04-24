@@ -1,9 +1,12 @@
 !!! 5
-%html
+%html{dir: rtl? ? 'rtl' : 'ltr'}
   %head
     %title RorTest
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = stylesheet_link_tag    "bootstrap.min", media: "all", "data-turbolinks-track" => true
+    - if rtl?
+      = stylesheet_link_tag    "bootstrap-rtl.min", media: "all", "data-turbolinks-track" => true
+      = stylesheet_link_tag    "bootstrap-rtl-fixes", media: "all", "data-turbolinks-track" => true
 
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag "bootstrap.min", "data-turbolinks-track" => true
@@ -14,33 +17,33 @@
     .navbar.navbar-inverse.navbar-fixed-top{role: 'navigation'}
       .container
         .navbar-header
-          %a.navbar-brand{href: root_path} Blog name
+          = link_to('Blog name', root_path, class: 'navbar-brand')
           %ul.nav.navbar-nav
             %li
-              = link_to('All stories', controller: '/stories', action: 'index')
+              = link_to(t(:all_stories), controller: '/stories', action: 'index')
             %li
-              = link_to('My stories', controller: '/stories', action: 'my_stories')
+              = link_to(t(:my_stories), controller: '/stories', action: 'my_stories')
             %li.dropdown
               %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-                Language
+                = t :language
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  %a{href: ''} en
+                  = link_to 'en', params.merge(locale: :en)
                 %li
-                  %a{href: ''} ру
+                  = link_to 'ру', params.merge(locale: :ru)
                 %li
-                  %a{href: ''} עב
+                  = link_to 'עב', params.merge(locale: :he)
         .collapse.navbar-collapse.navbar-right
           %ul.nav.navbar-nav
             -if user_signed_in?
               %li
-                = link_to('Logout', destroy_user_session_path)
+                = link_to(t(:logout), destroy_user_session_path)
             -else
               %li
-                = link_to('Login', new_user_session_path)
+                = link_to(t(:login), new_user_session_path)
               %li
-                = link_to('Register', new_user_registration_path)
+                = link_to(t(:register), new_user_registration_path)
 
     .container
       .col-lg-9

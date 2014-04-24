@@ -1,0 +1,15 @@
+
+he:
+  language: "בחירת שפה"
+  my_stories: "חדשות שלי"
+  all_stories: "חדשות"
+  register: "הרשמה"
+  login: "כניסה"
+  logout: "יציאה"
+  news_header: "חדשות"
+  more_button: "לסיפור מלא..."
+  actions_header: "פעולות"
+  add_button: "הוספה"
+  edit_button: "עריכה"
+  delete_button: "מחיקה"
+  cancel_button: "ביטול"
