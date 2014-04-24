@@ -7,6 +7,8 @@ require 'capybara/rspec'
 
 require 'spec_helpers'
 
+require 'bing_translator'
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -19,6 +21,12 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL
   config.include SpecHelpers
+
+  config.before(:each) do
+    allow_any_instance_of(BingTranslator).to receive(:translate) do |text, to|
+      text
+    end
+  end
 
   config.after do
     if example.metadata[:type] == :feature and example.exception.present?
