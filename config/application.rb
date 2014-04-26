@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'bing_translator'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -33,5 +34,12 @@ module RorTest
       g.fixture_replacement :factory_girl,
                             :dir => "spec/factories"
     end
+
+
+    client_id = 'translation-service'
+    client_secret = '+2r+EgXQVzg3TrR3kj00qES1wWSvFn9uR5FM3M8dJPE='
+    azure_secret = 'yTgXjhgmC1cgAn4y7QjIemScvfpUgfF+W6Kb4ntM5Co'
+
+    config.translator = BingTranslator.new(client_id, client_secret, false, azure_secret)
   end
 end

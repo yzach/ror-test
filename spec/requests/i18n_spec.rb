@@ -24,13 +24,11 @@ describe '#auto_translation' do
 
     before do
       @user = FactoryGirl.create :user_with_stories
-      allow_any_instance_of(BingTranslator).to receive(:translate).and_return('Тест история текста.')
       visit story_path(story, locale: 'ru')
     end
 
     it 'should be translated to current locale' do
-      # This is how bing translates 'Test story text.'
-      expect(page).to have_content('Тест история текста.')
+      expect(page).to have_content('Текст новости.')
     end
   end
 end

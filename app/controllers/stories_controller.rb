@@ -3,12 +3,14 @@ class StoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @stories = Story.all
+    # Only stories that have translation
+    @stories = Story.joins(:translations).joins(:languages)
+                    .where(languages: {code: I18n.locale})
+                    .includes(:translations)
   end
 
   def create
-    @story = Story.new story_params
-    @story.update_attributes user: current_user
+    @story = current_user.stories.build story_params
 
     if @story.save
       redirect_to @story, notice: 'Story has been created'
@@ -19,6 +21,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @story.translations.build
     render 'story_form'
   end
 
@@ -62,10 +65,10 @@ class StoriesController < ApplicationController
 
 private
   def story_params
-    params.require(:story).permit(:title, :text)
+    params.require(:story).permit(translations_attributes: [:id, :title, :text, :language_id])
   end
 
   def users_story
-    Story.find_by! id: params[:id], user: current_user
+    current_user.stories.find params[:id]
   end
 end

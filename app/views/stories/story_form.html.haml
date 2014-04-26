@@ -8,12 +8,17 @@
       - @story.errors.full_messages.each do |msg|
         %p.bg-danger.text-danger= msg
 
-  .form-group{class: [('has-error' if @story.errors[:title].any?)]}
-    = form.label :title, class: 'control-label'
-    = form.text_field :title, class: 'form-control'
-  .form-group{class: [('has-error' if @story.errors[:text].any?)]}
-    = form.label :text, class: 'control-label'
-    = form.text_area :text, class: 'form-control', rows: 10
+  = form.fields_for :translations, @story.default_translation do |translation_form|
+    .form-group{class: [('has-error' if translation_form.try(:object).try(:errors).try { |o| o[:title].any?})]}
+      = translation_form.label :title, class: 'control-label'
+      = translation_form.text_field :title, class: 'form-control'
+    .form-group{class: [('has-error' if translation_form.try(:object).try(:errors).try { |o| o[:text].any?})]}
+      = translation_form.label :text, class: 'control-label'
+      = translation_form.text_area :text, class: 'form-control', rows: 10
+    .form-group{class: [('has-error' if translation_form.try(:object).try(:errors).try { |o| o[:language_id].any?})]}
+      = translation_form.label :language_id, class: 'control-label'
+      = translation_form.select :language_id, Language.all.map {|l| [l.name, l.id]}, class: 'form-control', rows: 10
+
   %p.text-right
     = form.submit class: ['btn', 'btn-success']
     = form.button t('cancel_button'), class: ['btn', 'btn-default']

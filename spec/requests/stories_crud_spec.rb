@@ -111,13 +111,13 @@ describe 'CRUD' do
       click_button 'Edit'
     end
 
-    it 'story is updated' do
+    it 'should update the story' do
       title = 'A new title'
 
       expect {
         fill_in 'Title', with: title
         click_button 'Update Story'
-      }.to change { users_story(@user).title }.to(title)
+      }.to change { users_story(@user).default_translation.title }.to(title)
 
       expect(page).to have_selector('.alert', text: 'Story has been updated')
     end

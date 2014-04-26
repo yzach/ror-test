@@ -16,11 +16,4 @@ FactoryGirl.define do
       end
     end
   end
-
-  factory :story do
-    user
-
-    sequence(:title) {|n| "Story ##{n}"}
-    text 'Test story text.'
-  end
 end

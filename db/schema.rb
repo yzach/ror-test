@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406110613) do
+ActiveRecord::Schema.define(version: 20140424200810) do
+
+  create_table "languages", force: true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stories", force: true do |t|
     t.string   "title"
@@ -22,6 +29,20 @@ ActiveRecord::Schema.define(version: 20140406110613) do
   end
 
   add_index "stories", ["user_id"], name: "index_stories_on_user_id"
+
+  create_table "story_translations", force: true do |t|
+    t.integer  "story_id"
+    t.string   "title"
+    t.text     "text"
+    t.integer  "language_id"
+    t.boolean  "auto_translated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "story_translations", ["auto_translated"], name: "index_story_translations_on_auto_translated"
+  add_index "story_translations", ["language_id"], name: "index_story_translations_on_language_id"
+  add_index "story_translations", ["story_id"], name: "index_story_translations_on_story_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -2,4 +2,4 @@
 %ul.nav.nav-pills.nav-stacked
   - stories.each do |story|
     %li
-      %a{href: "#story-#{story.id}"}= story.title
+      %a{href: "#story-#{story.id}"}= story.translation.title
