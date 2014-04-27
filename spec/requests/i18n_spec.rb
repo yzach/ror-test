@@ -41,7 +41,6 @@ describe '#auto_translation' do
     end
 
     it 'should be translated to current locale' do
-      save_and_open_page
       expect(page).to have_content('Story text russian:en')
     end
   end

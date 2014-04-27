@@ -10,9 +10,13 @@ describe 'Stories page', js: true do
 
   context 'user clicks read untranslated'do
     it 'should show untranslated story' do
+      expect(page).to have_content('Story text russian')
       within '#story-1' do
         click_link 'Read untranslated'
       end
+      # ensure that opened fancybox frame has a the text "Story text russian"
+      # but not "Story text russian:en"
+      expect(page).to have_content(/Story text russian(?!:)/)
     end
   end
 end
