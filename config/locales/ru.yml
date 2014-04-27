@@ -1,5 +1,7 @@
 
 ru:
+  meta:
+    dir: "ltr"
   language: "Языки"
   my_stories: "Мои новости"
   all_stories: "Новости"
@@ -13,3 +15,4 @@ ru:
   edit_button: "Изменить"
   delete_button: "Удалить"
   cancel_button: "Отмена"
+  read_untranslated_button: "Прочесть в оригинале"

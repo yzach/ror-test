@@ -1,8 +1,6 @@
 %h1= t :my_stories
 
-- @stories.each do |story|
-  = render 'story', story: story
-  = link_to t(:more_button), story_path(story)
+= render 'stories/stories', stories: @stories
 
 - content_for :sidebar do
   %h3= t :actions_header

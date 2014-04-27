@@ -4,7 +4,13 @@ RorTest::Application.routes.draw do
 
   scope '(:locale)', locale: available_locales_regexp, defaults: { locale: nil } do
     devise_for :users
-    resources :stories
+
+    resources :stories do
+      member do
+        get 'untranslated' => 'stories#show_untranslated'
+      end
+    end
+
     get 'my-stories' => 'stories#my_stories', as: 'my_stories'
   end
 

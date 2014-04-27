@@ -1,0 +1,5 @@
+- stories.each do |story|
+  %div{id: "story-#{story.id}"}
+    = render 'stories/story', story: story
+    = link_to t(:more_button), story_path(story), class: %w(btn)
+    = link_to t(:read_untranslated_button), polymorphic_path(story, action: 'untranslated'), class: %w(btn fancybox), data: {'fancybox-type' => 'ajax'}

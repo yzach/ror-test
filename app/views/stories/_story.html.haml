@@ -1,7 +1,5 @@
 - translation = story.translation
-%h2{id: "story-#{story.id}"}
+%h2.title
   = translation.title
-  %small= story.updated_at.strftime('%v %R')
-%div
+%div.text
   = translation.text
-

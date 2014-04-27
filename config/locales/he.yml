@@ -1,5 +1,7 @@
 
 he:
+  meta:
+    dir: "rtl"
   language: "בחירת שפה"
   my_stories: "חדשות שלי"
   all_stories: "חדשות"
@@ -13,3 +15,4 @@ he:
   edit_button: "עריכה"
   delete_button: "מחיקה"
   cancel_button: "ביטול"
+  read_untranslated_button: "קרא בשפת מקור"

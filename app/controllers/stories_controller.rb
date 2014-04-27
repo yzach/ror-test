@@ -33,6 +33,15 @@ class StoriesController < ApplicationController
     @story = Story.find params[:id]
   end
 
+  def show_untranslated
+    @story = Story.find params[:id]
+
+    opts = {story: @story}
+    opts[:layout] = nil if request.xhr?  # disable layout for ajax calls
+
+    render '_untranslated_story', opts
+  end
+
   def edit
     @story = users_story
     render 'story_form'

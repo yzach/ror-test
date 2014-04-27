@@ -1,0 +1,6 @@
+- translation = @story.default_translation
+%div{class: t(:dir, scope: :meta, locale: translation.language.code)}
+  %h2.title
+    = translation.title
+  %div.text
+    = translation.text

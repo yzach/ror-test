@@ -1,5 +1,7 @@
 
 en:
+  meta:
+    dir: "ltr"
   language: "Language"
   my_stories: "My stories"
   all_stories: "All stories"
@@ -13,3 +15,4 @@ en:
   edit_button: "Edit"
   delete_button: "Delete"
   cancel_button: "Cancel"
+  read_untranslated_button: "Read untranslated"

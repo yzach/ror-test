@@ -28,7 +28,21 @@ describe '#auto_translation' do
     end
 
     it 'should be translated to current locale' do
-      expect(page).to have_content('Текст новости.')
+      expect(page).to have_content('Story text russian')
+    end
+  end
+
+  context 'when viewing story' do
+    let(:story) { @user.stories.first }
+
+    before do
+      @user = FactoryGirl.create :user_with_stories
+      visit story_path(story, locale: 'en')
+    end
+
+    it 'should be translated to current locale' do
+      save_and_open_page
+      expect(page).to have_content('Story text russian:en')
     end
   end
 end
