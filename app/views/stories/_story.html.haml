@@ -1,5 +1,7 @@
 - translation = story.translation
 %h2.title
   = translation.title
+  - if translation.auto_translated?
+    %span.label.label-warning= t :premoderated
 %div.text
   = translation.text

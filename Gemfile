@@ -53,6 +53,7 @@ end
 gem 'haml'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'cancan'
 gem 'bing_translator'
 
 group :development, :test do

@@ -10,7 +10,7 @@ describe 'Stories page', js: true do
 
   context 'user clicks read untranslated'do
     it 'should show untranslated story' do
-      expect(page).to have_content('Story text russian')
+      expect(page).to_not have_content(/Story text russian(?!:)/)
       within '#story-1' do
         click_link 'Read untranslated'
       end
