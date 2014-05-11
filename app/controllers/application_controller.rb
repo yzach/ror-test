@@ -43,4 +43,16 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :url_for
+
+  def authenticate_admin_user!
+    authenticate_user!
+    unless current_user.admin?
+      flash[:error] = 'You are not admin'
+      redirect_to root_path
+    end
+  end
+
+  def current_admin_user
+    current_user if current_user && current_user.admin?
+  end
 end

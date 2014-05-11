@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def expert?
     role == 'expert'
   end
+
+  def admin?
+    is_admin
+  end
 end

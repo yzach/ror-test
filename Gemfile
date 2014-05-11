@@ -51,6 +51,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'haml'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'cancan'

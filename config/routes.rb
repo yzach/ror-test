@@ -1,9 +1,11 @@
 RorTest::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
   available_locales_regexp = Regexp.union(*I18n.available_locales.map(&:to_s))
 
   scope '(:locale)', locale: available_locales_regexp, defaults: { locale: nil } do
-    devise_for :users
+    devise_for :users, ActiveAdmin::Devise.config
 
     resources :stories do
       member do
