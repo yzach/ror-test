@@ -9,6 +9,7 @@ RorTest::Application.routes.draw do
       member do
         get 'untranslated' => 'stories#show_untranslated'
       end
+      resource :edits, shallow: true
     end
 
     get 'my-stories' => 'stories#my_stories', as: 'my_stories'

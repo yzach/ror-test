@@ -17,3 +17,8 @@ he:
   cancel_button: "ביטול"
   read_untranslated_button: "קרא בשפת מקור"
   premoderated: "לא עבר עריכה"
+  submit: "שלח"
+  suggest_translation: "הצעת תרגום"
+  original_text: "טקסט מקור"
+  suggested_text: "תרגום"
+  edit_created: "הצעת תרגום התקבלה והועברה לאורך"

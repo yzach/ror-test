@@ -2,6 +2,8 @@ class StoryTranslation < ActiveRecord::Base
   belongs_to :story
   belongs_to :language
 
+  has_many :edits, foreign_key: :translation_id
+
   validates :title, length: {in: 3..120}
   validates :text, presence: true
 

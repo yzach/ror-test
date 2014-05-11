@@ -3,5 +3,21 @@
   = translation.title
   - if translation.auto_translated?
     %span.label.label-warning= t :premoderated
-%div.text
-  = translation.text
+.paragraph
+  - canedit = translation.auto_translated? && can?(:create, Edit)
+  - cantranslate = can? :translation_mode, story
+  - if canedit or cantranslate
+    .dropdown
+      %button.btn.dropdown-toggle{data: {toggle: 'dropdown'}}
+        %span.caret
+      %ul.dropdown-menu{role: 'menu'}
+        - if canedit
+          %li{role: 'presentation'}
+            = link_to t(:suggest_translation), new_story_edits_path(story), role: 'menuitem', class: 'fancybox add-translation', data: {'fancybox-type' => 'ajax'}
+          %li{role: 'presentation'}
+            =# link_to t(:complain), new_story_edits_path(story), role: 'menuitem', class: 'fancybox add-translation', data: {'fancybox-type' => 'ajax'}
+        - if cantranslate
+          %li{role: 'presentation'}
+            %a{role: 'menuitem', href: '#'}= t :translation_mode
+  .text
+    = translation.text

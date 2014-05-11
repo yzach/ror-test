@@ -17,3 +17,8 @@ ru:
   cancel_button: "Отмена"
   read_untranslated_button: "Прочесть в оригинале"
   premoderated: "Не проверенно"
+  submit: "Отправить"
+  suggest_translation: "Предложить Перевод"
+  original_text: "Исходный текст"
+  suggested_text: "Перевод"
+  edit_created: "Предложение перевода принято на рассмотрение"

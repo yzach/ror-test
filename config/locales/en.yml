@@ -17,3 +17,8 @@ en:
   cancel_button: "Cancel"
   read_untranslated_button: "Read untranslated"
   premoderated: "Pre-moderated"
+  submit: "Submit"
+  suggest_translation: "Suggest Translation"
+  original_text: "Original text"
+  suggested_text: "Translation"
+  edit_created: "Translation suggestion accepted for review"

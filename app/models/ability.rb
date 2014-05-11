@@ -2,18 +2,19 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new
+    # Here come permissions for anonymous user
+    return unless user
 
     case
       when user.expert?, user.corrector? then
         can [:create, :update, :delete], [Story, StoryTranslation]
+        can :translation_mode, Story
       else
         can [:create, :update, :delete], StoryTranslation do |translation|
           user == translation.story.user
         end
-        can [:create, :update, :delete], Story do |story|
-          user == story.user
-        end
+        can [:create, :update, :delete], Story, user_id: user.id
+        can [:create], Edit
     end
   end
 
