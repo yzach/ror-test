@@ -18,6 +18,7 @@ ru:
   read_untranslated_button: "Прочесть в оригинале"
   premoderated: "Не проверенно"
   submit: "Отправить"
+  translation_mode: "Перевод"
   complaints:
     buttons:
       complain: "Пожаловаться на перевод"

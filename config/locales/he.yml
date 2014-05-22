@@ -18,9 +18,10 @@ he:
   read_untranslated_button: "קרא בשפת מקור"
   premoderated: "לא עבר עריכה"
   submit: "שלח"
+  translation_mode: "תרגום"
   complaints:
     buttons:
-      complain: "הצעת תרגום"
+      complain: "תלונה על תרגום"
       accept: "לקבל"
       reject: "לדחות"
     new:

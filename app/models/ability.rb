@@ -7,7 +7,7 @@ class Ability
 
     if user.expert? or user.corrector?
         can [:create, :update, :delete], [Story, StoryTranslation]
-        can :translation_mode, StoryTranslation
+        can :translation_mode, :all
     end
 
     can [:create, :update, :delete], StoryTranslation do |translation|

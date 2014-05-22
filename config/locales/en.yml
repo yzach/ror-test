@@ -18,6 +18,7 @@ en:
   read_untranslated_button: "Read untranslated"
   premoderated: "Pre-moderated"
   submit: "Submit"
+  translation_mode: "Translation mode"
   complaints:
     buttons:
       complain: "Complain on translation"

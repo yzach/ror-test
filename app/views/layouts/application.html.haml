@@ -23,6 +23,9 @@
               = link_to(t(:all_stories), controller: '/stories', action: 'index')
             %li
               = link_to(t(:my_stories), controller: '/stories', action: 'my_stories')
+            - if can? :translation_mode, nil
+              %li
+                = link_to(t(:translation_mode), translation_mode_index_path)
             %li.dropdown
               %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
                 = t :language
