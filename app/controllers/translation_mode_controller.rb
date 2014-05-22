@@ -2,8 +2,8 @@ class TranslationModeController < ApplicationController
   before_filter :authenticate_corrector!
 
   def index
-    @translations = StoryTranslation.joins(:complaints)
-        .group(:translation_id).where(complaints: { status: 'new' })
+    @translations = StoryTranslation.distinct.joins(:complaints)
+        .where(complaints: { status: 'new' })
   end
 
   def show

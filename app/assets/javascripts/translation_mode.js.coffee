@@ -24,6 +24,7 @@ $ ->
     $(@).addClass('btn-success')
     $('.reject', complaint).removeClass('btn-danger')
     acceptComplaint(complaint)
+    false
 
   $('button.reject').click (event) ->
     event.preventDefault()
@@ -32,6 +33,7 @@ $ ->
     $(@).addClass('btn-danger')
     $('.accept', complaint).removeClass('btn-success')
     rejectComplaint(complaint)
+    false
 
   $('form.edit_story_translation').submit (event) ->
     document.getElementById('story_translation_text').value = $translationEditor.text()
