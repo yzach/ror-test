@@ -1,0 +1,15 @@
+%h1 Suggested translations
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th #
+      %th Title
+      %th Suggestions
+  %tbody
+    - @translations.each do |translation|
+      %tr
+        %td
+          = link_to translation.id, translation_mode_path(translation)
+        %td= translation.title
+        %td= translation.new_complaints.count

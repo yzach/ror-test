@@ -1,0 +1,26 @@
+// Place all the styles related to the translation_mode controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.complaint {
+  padding: 5px;
+  cursor: pointer;
+
+  &:hover, &.selected {
+    background: #eee;
+  }
+}
+
+.translation_editor {
+  border: #333 solid 1px;
+  padding: 5px;
+  border-radius: 5px;
+
+  mark {
+    background: rgba(#F2BDBD,0.5);
+
+    &.selected, &:hover {
+      background: #F2BDBD;
+    }
+  }
+}

@@ -4,7 +4,7 @@
   - if translation.auto_translated?
     %span.label.label-warning= t :premoderated
 .paragraph
-  - canedit = translation.auto_translated? && can?(:create, Edit)
+  - canedit = translation.auto_translated? && can?(:create, Complaint)
   - cantranslate = can? :translation_mode, story
   - if canedit or cantranslate
     .dropdown
@@ -13,11 +13,12 @@
       %ul.dropdown-menu{role: 'menu'}
         - if canedit
           %li{role: 'presentation'}
-            = link_to t(:suggest_translation), new_story_edits_path(story), role: 'menuitem', class: 'fancybox add-translation', data: {'fancybox-type' => 'ajax'}
+            = link_to t('complaints.buttons.complain'), new_story_complaints_path(story), role: 'menuitem', class: 'fancybox add-translation', data: {'fancybox-type' => 'ajax'}
           %li{role: 'presentation'}
             =# link_to t(:complain), new_story_edits_path(story), role: 'menuitem', class: 'fancybox add-translation', data: {'fancybox-type' => 'ajax'}
         - if cantranslate
           %li{role: 'presentation'}
             %a{role: 'menuitem', href: '#'}= t :translation_mode
   .text
-    = translation.text
+    - translation.text.lines.each do |paragraph|
+      %p<= paragraph.chomp

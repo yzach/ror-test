@@ -6,6 +6,10 @@ FactoryGirl.define do
     password '12345678'
     password_confirmation '12345678'
 
+    factory :corrector do
+      role 'corrector'
+    end
+
     factory :user_with_stories do
       ignore do
         stories_count 3
@@ -13,6 +17,10 @@ FactoryGirl.define do
 
       after(:create) do |user, evaluator|
         create_list :story, evaluator.stories_count, user: user
+      end
+
+      factory :user_with_stories_and_complaints do
+
       end
     end
   end

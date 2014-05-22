@@ -48,7 +48,7 @@
     .container
       .col-lg-9
         - flash.each do |severity, message|
-          .alert{class: "alert-#{{notice: 'success', error: 'danger'}[severity]}"}= message
+          .alert{class: "alert-#{{notice: 'success', error: 'danger', alert: 'danger'}[severity]}"}= message
         = yield
       .col-lg-3
         = yield :sidebar

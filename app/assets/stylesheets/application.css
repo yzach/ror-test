@@ -11,6 +11,7 @@
  *= require_self
  *= require fancybox
  *= require stories
+ *= require translation_mode
  */
 
 body {

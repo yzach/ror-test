@@ -1,0 +1,27 @@
+%h1 Translation Mode
+
+.container
+  = form_for @translation, url: translation_mode_path(@translation.id) do |form|
+    .col-lg-5
+      %h2 Original
+      - original = @translation.original
+      - original.text.lines.each do |paragraph|
+        %p= paragraph
+    .col-lg-5
+      %h2 Translation
+      = form.hidden_field :text
+      .translation_editor{contenteditable: 'true', spellcheck: 'true'}<
+        - @translation.text.lines do |paragraph|
+          %p= paragraph.chomp
+    .col-lg-2
+      %h2 Suggestions
+      - @translation.new_complaints.sort_by(&:position).each do |complaint|
+        = form.fields_for :complaints, complaint do |complaint_form|
+          .complaint{id: "complaint-#{complaint.id}", data: {text: complaint.text}}
+            %p.text-preview= truncate(complaint.text, length: 100)
+            = complaint_form.hidden_field :status, class: 'status'
+            %button.btn.btn-xs.btn-success.accept= t('complaints.buttons.accept')
+            %button.btn.btn-xs.btn-danger.reject= t('complaints.buttons.reject')
+
+    .clearfix
+    = form.submit t(:submit), class: %w[btn btn-success]

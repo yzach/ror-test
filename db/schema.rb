@@ -11,21 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511091429) do
+ActiveRecord::Schema.define(version: 20140514090532) do
 
-  create_table "edits", force: true do |t|
+  create_table "complaints", force: true do |t|
     t.integer  "translation_id"
     t.integer  "user_id"
     t.string   "status",         default: "new"
-    t.text     "original_text"
-    t.text     "suggested_text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "edits", ["status"], name: "index_edits_on_status"
-  add_index "edits", ["translation_id"], name: "index_edits_on_translation_id"
-  add_index "edits", ["user_id"], name: "index_edits_on_user_id"
+  add_index "complaints", ["status"], name: "index_complaints_on_status"
+  add_index "complaints", ["translation_id"], name: "index_complaints_on_translation_id"
+  add_index "complaints", ["user_id"], name: "index_complaints_on_user_id"
 
   create_table "languages", force: true do |t|
     t.string   "code"

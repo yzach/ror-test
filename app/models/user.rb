@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :stories
+  has_many :complaints
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

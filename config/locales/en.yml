@@ -18,7 +18,15 @@ en:
   read_untranslated_button: "Read untranslated"
   premoderated: "Pre-moderated"
   submit: "Submit"
-  suggest_translation: "Suggest Translation"
-  original_text: "Original text"
-  suggested_text: "Translation"
-  edit_created: "Translation suggestion accepted for review"
+  complaints:
+    buttons:
+      complain: "Complain on translation"
+      accept: "Accept"
+      reject: "Reject"
+    new:
+      header: "Complain on translation"
+      text: "Text"
+      comment: "Comment"
+    messages:
+      accepted: "Your complaint has been accepted"
+  access_denied: "You have no access rights to this page"

@@ -2,12 +2,22 @@ class StoryTranslation < ActiveRecord::Base
   belongs_to :story
   belongs_to :language
 
-  has_many :edits, foreign_key: :translation_id
+  has_many :complaints, foreign_key: :translation_id
+  accepts_nested_attributes_for :complaints
 
   validates :title, length: {in: 3..120}
   validates :text, presence: true
 
   after_save :refresh_translations, unless: :auto_translated?
+
+  def original
+    return self unless auto_translated?
+    StoryTranslation.find_by story_id: story_id, auto_translated: false
+  end
+
+  def new_complaints
+    complaints.where status: 'new'
+  end
 
   def refresh_translations
     # TODO: make it asynchronous

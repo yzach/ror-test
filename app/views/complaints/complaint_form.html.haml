@@ -1,0 +1,10 @@
+.translation-improvment-dialog
+  = form_for [@story, @complaint] do |form|
+    %h2= t 'complaints.new.header'
+    .form-group{class: [('has-error' if form.try(:object).try(:errors).try { |o| o[:original_text].any?})]}
+      = form.label :text, t('complaints.new.text')
+      = form.hidden_field :text
+      - @complaint.text.lines.each do |paragraph|
+        %p= paragraph
+
+    = form.submit t('complaints.buttons.complain'), class: %w[btn btn-default]

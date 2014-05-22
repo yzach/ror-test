@@ -1,30 +1,31 @@
-class EditsController < ApplicationController
+class ComplaintsController < ApplicationController
   before_action :authenticate_user!
 
   def new
     translation = current_translation
     text = params[:text] || translation.text
     @story = translation.story
-    @edit = translation.edits.build original_text: text, suggested_text: text
+    @complaint = translation.complaints.build text: text
 
     opts = {}
     opts[:layout] = nil if request.xhr?
 
-    render 'edit_form', opts
+    render 'complaint_form', opts
   end
 
   def create
     translation = current_translation
-    edit = translation.edits.build edit_params
+    edit = translation.complaints.build edit_params
     edit.status = 'new'
+    edit.user = current_user
 
     if edit.save
-      redirect_to request.referrer, notice: t(:edit_created)
+      redirect_to request.referrer, notice: t('complaints.messages.accepted')
     else
       opts = {}
       opts[:layout] = nil if request.xhr?
 
-      render 'edit_form', opts
+      render 'complaint_form', opts
     end
   end
 
@@ -38,7 +39,7 @@ class EditsController < ApplicationController
 private
 
   def edit_params
-    params.require(:edit).permit(:original_text, :suggested_text)
+    params.require(:complaint).permit(:text)
   end
 
 end

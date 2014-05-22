@@ -18,7 +18,15 @@ he:
   read_untranslated_button: "קרא בשפת מקור"
   premoderated: "לא עבר עריכה"
   submit: "שלח"
-  suggest_translation: "הצעת תרגום"
-  original_text: "טקסט מקור"
-  suggested_text: "תרגום"
-  edit_created: "הצעת תרגום התקבלה והועברה לאורך"
+  complaints:
+    buttons:
+      complain: "הצעת תרגום"
+      accept: "לקבל"
+      reject: "לדחות"
+    new:
+      header: "תלונה על תרגום"
+      text: "טקסט מקור"
+      comment: "הערות"
+    messages:
+      accepted: "הצעת תרגום התקבלה והועברה לאורך"
+  access_denied: "אין לך הרשאות גישה לעמוד זה"

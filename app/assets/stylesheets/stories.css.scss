@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.paragraph .dropdown {
+html[dir=ltr] .paragraph .dropdown {
   float: right;
+}
+
+html[dir=rtl] .paragraph .dropdown {
+  float: left;
 }
 
 .paragraph .dropdown .btn {

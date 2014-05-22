@@ -18,7 +18,15 @@ ru:
   read_untranslated_button: "Прочесть в оригинале"
   premoderated: "Не проверенно"
   submit: "Отправить"
-  suggest_translation: "Предложить Перевод"
-  original_text: "Исходный текст"
-  suggested_text: "Перевод"
-  edit_created: "Предложение перевода принято на рассмотрение"
+  complaints:
+    buttons:
+      complain: "Пожаловаться на перевод"
+      accept: "Принять"
+      reject: "Отклонить"
+    new:
+      header: "Жалоба на перевод"
+      text: "Исходный текст"
+      comment: "Коментарий"
+    messages:
+      accepted: "Предложение перевода принято на рассмотрение"
+  access_denied: "У вас нет доступа к этому разделу"

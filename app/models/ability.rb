@@ -5,17 +5,16 @@ class Ability
     # Here come permissions for anonymous user
     return unless user
 
-    case
-      when user.expert?, user.corrector? then
+    if user.expert? or user.corrector?
         can [:create, :update, :delete], [Story, StoryTranslation]
-        can :translation_mode, Story
-      else
-        can [:create, :update, :delete], StoryTranslation do |translation|
-          user == translation.story.user
-        end
-        can [:create, :update, :delete], Story, user_id: user.id
-        can [:create], Edit
+        can :translation_mode, StoryTranslation
     end
+
+    can [:create, :update, :delete], StoryTranslation do |translation|
+      user == translation.story.user
+    end
+    can [:create, :update, :delete], Story, user_id: user.id
+    can [:create], Complaint
   end
 
     # Define abilities for the passed in user here. For example:
