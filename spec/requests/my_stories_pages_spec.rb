@@ -10,23 +10,23 @@ describe 'My stories' do
   end
 
   context 'user logged in' do
-    before do
-      @user = FactoryGirl.create :user_with_stories
-    end
+    let(:user) { FactoryGirl.create :user_with_stories }
+    let(:other_user) { FactoryGirl.create :user }
 
     it 'should see his own stories' do
-      login @user
+      login user
       visit my_stories_path
-      @user.stories.each { |story|
-        should have_text story.title
+      user.stories.each { |story|
+        expect(page).to have_text story.translation.title
       }
     end
 
-    it 'shoud not see other\'s stories' do
-      user = FactoryGirl.create :user
-      login user
+    it 'should not see other\'s stories' do
+      login other_user
       visit my_stories_path
-      should_not have_text 'Story 1'
+      user.stories.each { |story|
+        expect(page).to_not have_text story.translation.title
+      }
     end
   end
 end

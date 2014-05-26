@@ -8,10 +8,7 @@ class Story < ActiveRecord::Base
   validates :user, presence: true
 
   def default_translation
-    return @default_translation if @default_translation
-
-    @default_translation = translations.where(auto_translated: false)
-                                       .first || translations.first
+    translations.where(auto_translated: false).first || translations.first
   end
 
   def translation lang=nil

@@ -3,4 +3,5 @@
   %h2.title
     = translation.title
   %div.text
-    = translation.text
+    - translation.text.lines.each do |paragraph|
+      %p<= paragraph.chomp
