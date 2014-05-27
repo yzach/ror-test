@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514090532) do
+ActiveRecord::Schema.define(version: 20140527074411) do
 
   create_table "complaints", force: true do |t|
     t.integer  "translation_id"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20140514090532) do
   add_index "complaints", ["translation_id"], name: "index_complaints_on_translation_id"
   add_index "complaints", ["user_id"], name: "index_complaints_on_user_id"
 
+  create_table "corrector_language_pairs", force: true do |t|
+    t.integer "user_id"
+    t.integer "from_language_id"
+    t.integer "to_language_id"
+  end
+
+  add_index "corrector_language_pairs", ["from_language_id"], name: "index_corrector_language_pairs_on_from_language_id"
+  add_index "corrector_language_pairs", ["to_language_id"], name: "index_corrector_language_pairs_on_to_language_id"
+  add_index "corrector_language_pairs", ["user_id"], name: "index_corrector_language_pairs_on_user_id"
+
   create_table "languages", force: true do |t|
     t.string   "code"
     t.string   "name"
@@ -34,11 +44,11 @@ ActiveRecord::Schema.define(version: 20140514090532) do
   end
 
   create_table "stories", force: true do |t|
-    t.string   "title"
-    t.text     "text"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "text"
+    t.string   "title"
   end
 
   add_index "stories", ["user_id"], name: "index_stories_on_user_id"

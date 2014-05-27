@@ -7,7 +7,17 @@ FactoryGirl.define do
     password_confirmation '12345678'
 
     factory :corrector do
+      ignore do
+        no_languages false
+      end
+
       role 'corrector'
+
+      after(:create) do |corrector, evaluator|
+        unless evaluator.no_languages
+          FactoryGirl.create :en_to_ru, user: corrector
+        end
+      end
     end
 
     factory :user_with_stories do

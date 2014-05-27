@@ -23,6 +23,16 @@ describe 'Translation Mode' do
     end
   end
 
+  context 'when corrector can\'t translate a story' do
+    let(:corrector) {FactoryGirl.create :corrector, no_languages: true}
+    before { login corrector }
+    before { visit translation_mode_index_path }
+
+    it 'should have no complaints' do
+      expect(page).to_not have_content translation.title
+    end
+  end
+
   context 'when corrector enters translation mode' do
     before { login corrector }
     before { visit translation_mode_path translation }
@@ -33,10 +43,9 @@ describe 'Translation Mode' do
       end
     end
 
-    context 'saves translation', js: true do  # Translation editor requires JS
+    context 'when saves translation', js: true do  # Translation editor requires JS
       it 'should save changes' do
         message = 'Edit test message'
-        #fill_in 'translation_editor', with: message
         editor = find(:css, 'div.translation_editor')
         editor.set message
         click_button 'Submit'

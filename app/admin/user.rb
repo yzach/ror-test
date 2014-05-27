@@ -23,9 +23,22 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
+    end
+
+    f.inputs "Role" do
       f.input :is_admin
       f.input :role
     end
+
+    f.inputs "Languages" do
+      f.has_many :language_pairs, heading: false do |pair_f|
+        languages = Language.all.map {|l| [l.code, l.id]}
+        pair_f.input :from_language_id, as: :select, collection: languages
+        pair_f.input :to_language_id, as: :select, collection: languages
+        pair_f.input :_destroy, as: :boolean, label: 'Destory?'
+      end
+    end
+
     f.actions
   end
 

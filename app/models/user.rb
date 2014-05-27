@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 
   has_many :stories
   has_many :complaints
+  has_many :language_pairs, class_name: CorrectorLanguagePair
+
+  accepts_nested_attributes_for :language_pairs
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -21,5 +24,11 @@ class User < ActiveRecord::Base
 
   def admin?
     is_admin
+  end
+
+  def can_translate? translation
+    pairs = language_pairs.map {|p| [p.from_language_id, p.to_language_id]}
+    pair = [translation.story.default_translation.language_id, translation.language_id]
+    pairs.include? pair
   end
 end

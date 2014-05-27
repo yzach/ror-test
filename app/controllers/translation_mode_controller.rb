@@ -2,8 +2,14 @@ class TranslationModeController < ApplicationController
   before_filter :authenticate_corrector!
 
   def index
-    @translations = StoryTranslation.distinct.joins(:complaints)
+    translations = StoryTranslation.distinct.joins(:complaints)
         .where(complaints: { status: 'new' })
+
+    # My only hope is that there won't be lots of complaints
+    # TODO: Rewrite as a query. Might require scheme change
+    @translations = translations.select do |translation|
+      current_user.can_translate? translation
+    end
   end
 
   def show
