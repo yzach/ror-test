@@ -31,3 +31,5 @@ en:
     messages:
       accepted: "Your complaint has been accepted"
   access_denied: "You have no access rights to this page"
+  placeholders:
+    add_comment: "Add comment..."

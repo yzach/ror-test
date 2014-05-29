@@ -31,3 +31,5 @@ he:
     messages:
       accepted: "הצעת תרגום התקבלה והועברה לאורך"
   access_denied: "אין לך הרשאות גישה לעמוד זה"
+  placeholders:
+    add_comment: "הוסף הערה..."

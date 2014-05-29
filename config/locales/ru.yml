@@ -31,3 +31,5 @@ ru:
     messages:
       accepted: "Предложение перевода принято на рассмотрение"
   access_denied: "У вас нет доступа к этому разделу"
+  placeholders:
+    add_comment: "Добавить коментарий..."

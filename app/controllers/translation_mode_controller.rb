@@ -13,7 +13,7 @@ class TranslationModeController < ApplicationController
   end
 
   def show
-    @translation = StoryTranslation.joins(:complaints).find(params[:id])
+    @translation = StoryTranslation.includes(complaints: :comments).find(params[:id])
   end
 
   def update

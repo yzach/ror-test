@@ -19,6 +19,8 @@
         = form.fields_for :complaints, complaint do |complaint_form|
           .complaint{id: "complaint-#{complaint.id}", data: {text: complaint.text}}
             %p.text-preview= truncate(complaint.text, length: 100)
+            - complaint.comments.each do |comment|
+              %p.comment= comment.text
             = complaint_form.hidden_field :status, class: 'status'
             %button.btn.btn-xs.btn-success.accept= t('complaints.buttons.accept')
             %button.btn.btn-xs.btn-danger.reject= t('complaints.buttons.reject')

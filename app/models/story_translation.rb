@@ -12,7 +12,7 @@ class StoryTranslation < ActiveRecord::Base
 
   def original
     return self unless auto_translated?
-    StoryTranslation.find_by story_id: story_id, auto_translated: false
+    StoryTranslation.find_by story_id: story_id, auto_translated: [false, nil]
   end
 
   def new_complaints

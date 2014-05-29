@@ -3,7 +3,7 @@ class ComplaintsController < ApplicationController
 
   def new
     translation = current_translation
-    text = params[:text] || translation.text
+    text = params[:text].present? ? params[:text] : translation.text
     @story = translation.story
     @complaint = translation.complaints.build text: text
 
@@ -15,11 +15,13 @@ class ComplaintsController < ApplicationController
 
   def create
     translation = current_translation
-    edit = translation.complaints.build edit_params
-    edit.status = 'new'
-    edit.user = current_user
+    final_params = edit_params.deep_merge(
+        status: 'new', user_id: current_user.id,
+        :comments_attributes => {'0' => {user_id: current_user.id}}
+    )
+    complaint = translation.complaints.build final_params
 
-    if edit.save
+    if complaint.save
       redirect_to request.referrer, notice: t('complaints.messages.accepted')
     else
       opts = {}
@@ -39,7 +41,6 @@ class ComplaintsController < ApplicationController
 private
 
   def edit_params
-    params.require(:complaint).permit(:text)
+    params.require(:complaint).permit(:text, comments_attributes: [:text])
   end
-
 end

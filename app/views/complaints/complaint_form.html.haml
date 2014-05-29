@@ -6,5 +6,7 @@
       = form.hidden_field :text
       - @complaint.text.lines.each do |paragraph|
         %p= paragraph
+      = form.fields_for :comments, @complaint.comments.build do |comments_form|
+        = comments_form.text_area :text, rows: 3, placeholder: t('placeholders.add_comment')
 
     = form.submit t('complaints.buttons.complain'), class: %w[btn btn-default]
