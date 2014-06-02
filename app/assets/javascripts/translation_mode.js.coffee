@@ -48,15 +48,17 @@ $ ->
       tags = []
       for complaint in @complaints.get()
         complaint_text = complaint.getAttribute('data-text')
-        index = text.indexOf complaint_text
-        continue if index <= -1
 
-        tags.push
-          index: index
-          tag: "<mark data-complaint-id=#{complaint.id}>"
-        tags.push
-          index: index + complaint_text.length
-          tag: "</mark>"
+        for line in complaint_text.split(/\n\r?/)
+          index = text.indexOf line
+          continue if index <= -1
+
+          tags.push
+            index: index
+            tag: "<mark data-complaint-id=#{complaint.id}>"
+          tags.push
+            index: index + line.length
+            tag: "</mark>"
 
       tags.sort (a, b) -> a.index < b.index
         .map (complaint) ->
